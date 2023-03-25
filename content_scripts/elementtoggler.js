@@ -8,6 +8,10 @@
 
     console.log("Element Toggler Enabled");
 
+    var storedElements = []; //temp storage
+    var turnOffBox = false;
+    var itemsOff = true;
+
     function selectBtn() {
         // create box
         var hoverBox = document.createElement("div");
@@ -38,6 +42,38 @@
             hoverBox.style.top = targetOffset.top + window.scrollY - boxBorder + "px";
             hoverBox.style.left = targetOffset.left + window.scrollX - boxBorder + "px";
 
+            //hide box and disable
+            if (turnOffBox) {
+                document.removeEventListener("mouseover", boxListener);
+                hoverBox.remove();
+                // hoverBox.style.width = 0;
+                // hoverBox.style.height = 0;
+                turnOffBox = false;
+            }
+        });
+
+        //listens for selection
+        document.addEventListener("click", function attributeListener(e) {
+            if (e.target.id.indexOf('selector') !== -1
+                || e.target.tagName === 'BODY'
+                || e.target.tagName === 'HTML')
+                return;
+
+            console.log(e.target.getAttribute('id'));
+            storedElements.push(e.target.getAttribute('id'));
+
+            //check for id if not get class
+            // if (e.target.getAttribute('id') != null) {
+            //     storedElements.push("#" + e.target.getAttribute('id'));
+            // } else if (e.target.classList[0] != null) {
+            //     storedElements.push("." + e.target.classList[0]);
+            // } {
+            //     console.log("No attributes");
+            // }
+
+            //disable after getting selection
+            turnOffBox = true;
+            document.removeEventListener("click", attributeListener);
         });
     }
 
