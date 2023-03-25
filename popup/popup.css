@@ -1,0 +1,38 @@
+html,
+body {
+  width: 100px;
+  background-color: #181818;
+}
+
+.hidden {
+  display: none;
+}
+
+button {
+  border: none;
+  width: 100%;
+  margin: 3% auto;
+  padding: 4px;
+  text-align: center;
+  font-size: 1.5em;
+  cursor: pointer;
+  background-color: #505050;
+  border-radius: 5px;
+  color: #FFFFFF;
+}
+
+button:hover {
+  background-color: #808080;
+}
+
+button:active {
+  background-color: #656565;
+}
+
+button.reset {
+  background-color: #FBFBC9;
+}
+
+button.reset:hover {
+  background-color: #EAEA9D;
+}
