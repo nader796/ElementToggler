@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+  "name": "ElementToggler",
+  "version": "1.0",
+  "description": "Allows a page element to be selected and toggled on/off.",
+  
+  "icons": {
+    "32": "icons/app-icon-32.png"
+  },
+
+  "browser_action": {
+    "default_icon": "icons/button-icon-19.png",
+    "default_title": "Element Toggler",
+    "default_popup": "popup/popup.html"
+  },
+
+  "permissions": [
+    "activeTab"
+  ]
+}
