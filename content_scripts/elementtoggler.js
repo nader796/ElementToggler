@@ -78,7 +78,30 @@
     }
 
     function toggleBtn() {
-        
+        console.log(storedElements);
+        if (itemsOff) {
+            for (let i = 0; i < storedElements.length; i++)
+                document.getElementById(storedElements[i]).style.display = "none";
+                
+                // try {
+                //     document.querySelector(CSS.escape(storedElements[i])).style.display = "none";
+                // } catch {
+                //     console.log(CSS.escape(storedElements[i]));
+                // }
+                    
+            itemsOff = false;
+        } else {
+            for (let i = 0; i < storedElements.length; i++)
+                document.getElementById(storedElements[i]).style.display = "block";
+                
+                // try {
+                //     document.querySelector(CSS.escape(storedElements[i])).style.display = "block";
+                // } catch {
+                //     console.log(CSS.escape(storedElements[i]));
+                // }
+
+            itemsOff = true;
+        }
     }
 
     function editBtn() {
@@ -86,7 +109,9 @@
     }
 
     function resetBtn() {
-        
+        if (!itemsOff)
+            toggleBtn();
+        storedElements = [];
     }
 
     //listen for background messages
