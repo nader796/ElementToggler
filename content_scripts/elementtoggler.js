@@ -37,7 +37,7 @@
             const boxBorder = 5;
             hoverBox.style.width = targetWidth + boxBorder * 2 + "px";
             hoverBox.style.height = targetHeight + boxBorder * 2 + "px";
-            
+
             // need scrollX and scrollY to account for scrolling
             hoverBox.style.top = targetOffset.top + window.scrollY - boxBorder + "px";
             hoverBox.style.left = targetOffset.left + window.scrollX - boxBorder + "px";
@@ -46,8 +46,6 @@
             if (turnOffBox) {
                 document.removeEventListener("mouseover", boxListener);
                 hoverBox.remove();
-                // hoverBox.style.width = 0;
-                // hoverBox.style.height = 0;
                 turnOffBox = false;
             }
         });
@@ -60,16 +58,15 @@
                 return;
 
             console.log(e.target.getAttribute('id'));
-            storedElements.push(e.target.getAttribute('id'));
 
             //check for id if not get class
-            // if (e.target.getAttribute('id') != null) {
-            //     storedElements.push("#" + e.target.getAttribute('id'));
-            // } else if (e.target.classList[0] != null) {
-            //     storedElements.push("." + e.target.classList[0]);
-            // } {
-            //     console.log("No attributes");
-            // }
+            if (e.target.getAttribute('id') != null) {
+                storedElements.push("#" + CSS.escape(e.target.getAttribute('id')));
+            } else if (e.target.classList[0] != null) {
+                storedElements.push("." + CSS.escape(e.target.classList[0]));
+            } else {
+                console.log("No attributes");
+            }
 
             //disable after getting selection
             turnOffBox = true;
@@ -81,31 +78,17 @@
         console.log(storedElements);
         if (itemsOff) {
             for (let i = 0; i < storedElements.length; i++)
-                document.getElementById(storedElements[i]).style.display = "none";
-                
-                // try {
-                //     document.querySelector(CSS.escape(storedElements[i])).style.display = "none";
-                // } catch {
-                //     console.log(CSS.escape(storedElements[i]));
-                // }
-                    
+                    document.querySelector(storedElements[i]).style.display = "none";
             itemsOff = false;
         } else {
             for (let i = 0; i < storedElements.length; i++)
-                document.getElementById(storedElements[i]).style.display = "block";
-                
-                // try {
-                //     document.querySelector(CSS.escape(storedElements[i])).style.display = "block";
-                // } catch {
-                //     console.log(CSS.escape(storedElements[i]));
-                // }
-
+                    document.querySelector(storedElements[i]).style.display = "block";             
             itemsOff = true;
         }
     }
 
     function editBtn() {
-        
+
     }
 
     function resetBtn() {
