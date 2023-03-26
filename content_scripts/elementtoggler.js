@@ -10,7 +10,7 @@
 
     var storedElements = []; //temp storage
     var turnOffBox = false;
-    var itemsOff = true;
+    var elementIsHidden = false;
 
     function selectBtn() {
         // create box
@@ -57,8 +57,6 @@
                 || e.target.tagName === 'HTML')
                 return;
 
-            console.log(e.target.getAttribute('id'));
-
             //check for id if not get class
             if (e.target.getAttribute('id') != null) {
                 storedElements.push("#" + CSS.escape(e.target.getAttribute('id')));
@@ -76,14 +74,14 @@
 
     function toggleBtn() {
         console.log(storedElements);
-        if (itemsOff) {
+        if (elementIsHidden) {
             for (let i = 0; i < storedElements.length; i++)
-                    document.querySelector(storedElements[i]).style.display = "none";
-            itemsOff = false;
+                    document.querySelector(storedElements[i]).style.display = "block";
+            elementIsHidden = false;
         } else {
             for (let i = 0; i < storedElements.length; i++)
-                    document.querySelector(storedElements[i]).style.display = "block";             
-            itemsOff = true;
+                    document.querySelector(storedElements[i]).style.display = "none";             
+            elementIsHidden = true;
         }
     }
 
@@ -92,7 +90,7 @@
     }
 
     function resetBtn() {
-        if (!itemsOff)
+        if (elementIsHidden)
             toggleBtn();
         storedElements = [];
     }
