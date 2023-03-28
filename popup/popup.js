@@ -13,14 +13,14 @@ function togglerMessage(msg) {
         .catch(onError);
 }
 
-//assign button functions
 function listenForClicks() {
-    var buttons = document.querySelector("#popup-content").children;
-    for (let i = 0; i < buttons.length; i++) {
-        buttons[i].addEventListener("click", (e) => {
-            togglerMessage(buttons[i].textContent);
-        })
-    }
+    document.addEventListener("click", (e) => {
+        if (e.target.tagName !== "BUTTON" || !e.target.closest("#popup-content")) {
+            return;
+        } else {
+            togglerMessage(e.target.textContent);
+        }
+    });
 };
 
 function reportExecuteScriptError(error) {
