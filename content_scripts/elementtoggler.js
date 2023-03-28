@@ -76,11 +76,11 @@
         console.log(storedElements);
         if (elementIsHidden) {
             for (let i = 0; i < storedElements.length; i++)
-                    document.querySelector(storedElements[i]).style.display = "block";
+                document.querySelector(storedElements[i]).style.display = "block";
             elementIsHidden = false;
         } else {
             for (let i = 0; i < storedElements.length; i++)
-                    document.querySelector(storedElements[i]).style.display = "none";             
+                document.querySelector(storedElements[i]).style.display = "none";
             elementIsHidden = true;
         }
     }
@@ -105,6 +105,10 @@
             editBtn();
         } else if (message.command === "Reset") {
             resetBtn();
+        } else if (message.command === "Save") {
+            return Promise.resolve({ response: storedElements })
+        } else if (message.command === "Load") {
+            storedElements = message.data;
         }
     });
 
