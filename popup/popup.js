@@ -50,6 +50,8 @@ function listenForClicks() {
     document.addEventListener("click", (e) => {
         if (e.target.tagName !== "BUTTON" || !e.target.closest("#popup-content")) {
             return;
+        } else if (e.target.textContent === "Edit") {
+            browser.runtime.openOptionsPage();
         } else if (e.target.textContent === "Save") {
             responseMessage(e.target.textContent, null);
         } else if (e.target.textContent === "Load") {
