@@ -30,4 +30,5 @@ button:active {
     overflow: scroll;
     color: white;
     height: 250px;
+    white-space: pre-wrap
 }
