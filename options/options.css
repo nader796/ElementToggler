@@ -1,0 +1,33 @@
+body {
+    background-color: #181818;
+}
+
+button {
+    border: none;
+    text-align: center;
+    font-size: 1.5em;
+    cursor: pointer;
+    background-color: #505050;
+    border-radius: 5px;
+    color: #FFFFFF;
+    width: 49.5%;
+}
+
+button:hover {
+    background-color: #808080;
+}
+
+button:active {
+    background-color: #656565;
+}
+
+#buttons {
+    text-align: center;
+    height: 30px;
+}
+
+#content-box {
+    overflow: scroll;
+    color: white;
+    height: 250px;
+}
