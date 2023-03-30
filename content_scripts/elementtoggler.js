@@ -57,7 +57,6 @@
                 || e.target.tagName === 'HTML')
                 return;
 
-            //check for id if not get class
             if (e.target.getAttribute('id') != null) {
                 storedElements.push("#" + CSS.escape(e.target.getAttribute('id')));
             } else if (e.target.classList[0] != null) {
@@ -66,14 +65,12 @@
                 console.log("No attributes");
             }
 
-            //disable after getting selection
             turnOffBox = true;
             document.removeEventListener("click", attributeListener);
         });
     }
 
     function toggleBtn() {
-        console.log(storedElements);
         if (elementIsHidden) {
             for (let i = 0; i < storedElements.length; i++)
                 document.querySelector(storedElements[i]).style.display = "block";
@@ -83,10 +80,6 @@
                 document.querySelector(storedElements[i]).style.display = "none";
             elementIsHidden = true;
         }
-    }
-
-    function editBtn() {
-
     }
 
     function resetBtn() {
@@ -101,8 +94,6 @@
             selectBtn();
         } else if (message.command === "Toggle") {
             toggleBtn();
-        } else if (message.command === "Edit") {
-            editBtn();
         } else if (message.command === "Reset") {
             resetBtn();
         } else if (message.command === "Save") {

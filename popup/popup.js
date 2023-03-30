@@ -20,6 +20,7 @@ function loadLocally() {
         });
 }
 
+//send message when expecting response
 function responseMessage(msg, data) {
     browser.tabs.query({ active: true, currentWindow: true })
         .then(function (tabs) {
@@ -70,7 +71,6 @@ function reportExecuteScriptError(error) {
 
 //When the popup loads, inject a content script
 browser.tabs
-    //.executeScript({ file: "/thirdparty/jquery-3.6.4.min.js" })
     .executeScript({ file: "/content_scripts/elementtoggler.js" })
     .then(listenForClicks)
     .catch(reportExecuteScriptError);

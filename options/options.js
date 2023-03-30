@@ -6,7 +6,6 @@ function updateContent() {
             return browser.storage.local.get(null);
         })
         .then((storedInfo) => {
-            console.log(JSON.stringify(storedInfo,null,'\t'));
             contentBox.textContent = JSON.stringify(storedInfo,null,'\t');
         });
 }

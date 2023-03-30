@@ -1,7 +1,13 @@
 html,
 body {
-  width: 100px;
+  width: 250px;
   background-color: #181818;
+}
+
+.col {
+  float: left;
+  width: 48%;
+  padding: 1%;
 }
 
 .hidden {
@@ -27,12 +33,4 @@ button:hover {
 
 button:active {
   background-color: #656565;
-}
-
-button.reset {
-  background-color: #FBFBC9;
-}
-
-button.reset:hover {
-  background-color: #EAEA9D;
 }
