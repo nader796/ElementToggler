@@ -58,9 +58,14 @@
                 return;
 
             if (e.target.getAttribute('id') != null) {
-                storedElements.push("#" + CSS.escape(e.target.getAttribute('id')));
+                //check for duplicates and store
+                let elementId = "#" + CSS.escape(e.target.getAttribute('id'));
+                if (storedElements.indexOf(elementId) == -1)
+                    storedElements.push(elementId);
             } else if (e.target.classList[0] != null) {
-                storedElements.push("." + CSS.escape(e.target.classList[0]));
+                let elementClass = "." + CSS.escape(e.target.classList[0]);
+                if (storedElements.indexOf(elementClass) == -1)
+                    storedElements.push(elementClass);
             } else {
                 console.log("No attributes");
             }
