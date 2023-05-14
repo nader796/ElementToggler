@@ -16,10 +16,13 @@
         // create box
         var hoverBox = document.createElement("div");
         hoverBox.style.position = "absolute";
-        hoverBox.style.background = "lightblue";
-        hoverBox.style.zIndex = "-9999"; // avoid blocking elements
+        hoverBox.style.background = "lightcoral";
+        hoverBox.style.opacity = 0.5;
+        hoverBox.style.pointerEvents = "none";
+        hoverBox.style.margin = "-9999px";
+        hoverBox.style.border = "9999px solid dimgrey";
+        hoverBox.style.zIndex = "9999"
         // hoverBox.style.transition = "all 200ms ease-out"
-        // hoverBox.style.border = "5px solid red";
         document.body.appendChild(hoverBox);
 
         //repositions hoverbox to show selection
