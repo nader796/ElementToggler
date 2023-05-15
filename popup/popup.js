@@ -5,7 +5,8 @@ function onError(error) {
 function saveLocally(data) {
     browser.tabs.query({ active: true, currentWindow: true }).then((tabs) => {
         let contentToStore = {};
-        contentToStore[tabs[0].url] = data;
+        let domain = (new URL(tabs[0].url)).hostname;
+        contentToStore[domain] = data;
         browser.storage.local.set(contentToStore);
     });
 }
@@ -13,7 +14,8 @@ function saveLocally(data) {
 function loadLocally() {
     browser.tabs.query({ active: true, currentWindow: true })
         .then((tabs) => {
-            return browser.storage.local.get(tabs[0].url);
+            let domain = (new URL(tabs[0].url)).hostname;
+            return browser.storage.local.get(domain);
         })
         .then((storedInfo) => {
             togglerMessage("Load", storedInfo[Object.keys(storedInfo)[0]]);
